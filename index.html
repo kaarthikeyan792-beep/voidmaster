@@ -1,68 +1,180 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SKYREIGN AI COMMAND SYSTEM</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKYREIGN | FINAL FORM</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
 
 body{
-margin:0;
-font-family:Arial;
-background:#0b0b0b;
-color:white;
-}
-
-header{
 background:black;
-padding:30px;
-text-align:center;
-border-bottom:3px solid crimson;
+color:white;
+overflow-x:hidden;
 }
 
-h1{
+/* LOADING SCREEN */
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+animation:fadeOut 2s ease 3s forwards;
+}
+
+#loader h1{
+font-size:3rem;
 color:crimson;
+animation:pulse 1.5s infinite alternate;
 }
 
-.dashboard{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
-padding:30px;
+@keyframes pulse{
+from{text-shadow:0 0 10px crimson;}
+to{text-shadow:0 0 30px magenta;}
 }
 
-.department{
-background:#151515;
-padding:20px;
-border-left:4px solid crimson;
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
+
+/* 3D BACKGROUND */
+#bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* NAV */
+nav{
+position:fixed;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:20px 50px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(15px);
+z-index:1000;
+}
+
+nav h2{
+color:crimson;
+letter-spacing:3px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
 transition:0.3s;
 }
 
-.department:hover{
-transform:scale(1.03);
+nav a:hover{
+color:crimson;
 }
 
-button{
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:5rem;
+position:relative;
+animation:glow 2s infinite alternate;
+}
+
+.hero h1::before,
+.hero h1::after{
+content:"SKYREIGN";
+position:absolute;
+left:0;
+top:0;
+color:magenta;
+z-index:-1;
+animation:glitch 2s infinite;
+}
+
+.hero h1::after{
+color:cyan;
+animation-delay:1s;
+}
+
+@keyframes glitch{
+0%{clip-path:inset(0 0 80% 0);}
+25%{clip-path:inset(40% 0 30% 0);}
+50%{clip-path:inset(10% 0 60% 0);}
+75%{clip-path:inset(60% 0 20% 0);}
+100%{clip-path:inset(0 0 80% 0);}
+}
+
+@keyframes glow{
+from{text-shadow:0 0 20px crimson;}
+to{text-shadow:0 0 40px magenta;}
+}
+
+.hero button{
+margin-top:30px;
+padding:15px 40px;
 background:crimson;
-color:white;
 border:none;
-padding:8px 12px;
-margin-top:10px;
+border-radius:50px;
+color:white;
 cursor:pointer;
+transition:0.4s;
 }
 
-textarea{
-width:100%;
-height:80px;
-margin-top:10px;
-background:#1f1f1f;
-color:white;
-border:none;
-padding:10px;
+.hero button:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px crimson;
 }
 
-output{
-display:block;
-margin-top:10px;
-color:#00ffcc;
+/* SECTION */
+.section{
+padding:100px 50px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(20px);
+padding:30px;
+border-radius:20px;
+transition:0.5s;
+}
+
+.card:hover{
+transform:translateY(-15px) rotateY(8deg);
+box-shadow:0 0 30px crimson;
+}
+
+footer{
+text-align:center;
+padding:40px;
+background:black;
 }
 
 </style>
@@ -70,139 +182,109 @@ color:#00ffcc;
 
 <body>
 
-<header>
-<h1>👑 SKYREIGN AI COMMAND SYSTEM</h1>
-<p>All Departments Under Supreme Command</p>
-</header>
-
-<div class="dashboard">
-
-<!-- STORY DEPARTMENT -->
-<div class="department">
-<h2>🎌 Anime Story Department</h2>
-<p>Head: AI Archon Raizen</p>
-<button onclick="generateStory()">Generate Story</button>
-<output id="storyOutput"></output>
+<div id="loader">
+<h1>INITIALIZING SKYREIGN...</h1>
 </div>
 
-<!-- CHARACTER FORGE -->
-<div class="department">
-<h2>⚔️ Character Forge</h2>
-<p>Head: Lady Aiko</p>
-<button onclick="generateCharacter()">Create Character</button>
-<output id="characterOutput"></output>
+<canvas id="bg"></canvas>
+
+<nav>
+<h2>SKYREIGN</h2>
+<div>
+<a href="#">Home</a>
+<a href="#">System</a>
+<a href="#">Archive</a>
+<a href="#">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>SKYREIGN</h1>
+<p>FINAL FORM INTERFACE</p>
+<button onclick="warpEffect()">ENTER THE EMPIRE</button>
+</section>
+
+<section class="section">
+
+<div class="card">
+<h3>⚔ Sovereign System</h3>
+<p>Command all departments.</p>
 </div>
 
-<!-- STUDY DEPARTMENT -->
-<div class="department">
-<h2>📚 Study Assistance Department</h2>
-<p>Head: Scholar Orion</p>
-<textarea id="studyInput" placeholder="Enter subject (Math, Physics, History...)"></textarea>
-<button onclick="studyHelp()">Get Help</button>
-<output id="studyOutput"></output>
+<div class="card">
+<h3>🌌 Anime Archive</h3>
+<p>Explore universes.</p>
 </div>
 
-<!-- ANIME ARCHIVE -->
-<div class="department">
-<h2>🌌 Anime Archive</h2>
-<p>Head: Archivist Zero</p>
-<textarea id="animeSearch" placeholder="Search anime..."></textarea>
-<button onclick="searchAnime()">Search</button>
-<output id="animeOutput"></output>
+<div class="card">
+<h3>🧠 Study Nexus</h3>
+<p>Master knowledge.</p>
 </div>
 
-<!-- LORE VAULT -->
-<div class="department">
-<h2>🏛 Lore Vault</h2>
-<p>Head: Void Oracle</p>
-<button onclick="generateLore()">Reveal Lore</button>
-<output id="loreOutput"></output>
+<div class="card">
+<h3>🎨 Creator Forge</h3>
+<p>Create legends.</p>
 </div>
 
-<!-- RESEARCH DIVISION -->
-<div class="department">
-<h2>🧠 Research Division</h2>
-<p>Head: Quantum Sage</p>
-<textarea id="researchInput" placeholder="Ask research question..."></textarea>
-<button onclick="researchHelp()">Analyze</button>
-<output id="researchOutput"></output>
-</div>
+</section>
 
-</div>
+<footer>
+👑 SKYREIGN FINAL FORM © 2026
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
 
-// STORY GENERATOR
-function generateStory(){
-const stories=[
-"A fallen emperor awakens a forbidden dragon core to reclaim his shattered kingdom.",
-"In a cyberpunk city ruled by guilds, a rogue system user challenges the world ranking board.",
-"A systemless boy hacks the ranking system and becomes a hidden sovereign."
-];
-document.getElementById("storyOutput").innerText=
-stories[Math.floor(Math.random()*stories.length)];
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById("bg"),alpha:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+const geometry=new THREE.BufferGeometry();
+const count=8000;
+const positions=new Float32Array(count*3);
+
+for(let i=0;i<count*3;i++){
+positions[i]=(Math.random()-0.5)*12;
 }
 
-// CHARACTER GENERATOR
-function generateCharacter(){
-const chars=[
-"Name: Kael | Rank: S | Ability: Shadow Rift Manipulation",
-"Name: Aira | Rank: SS | Ability: Time Fragment Slash",
-"Name: Zeon | Rank: Mythic | Ability: Blood Dragon Form"
-];
-document.getElementById("characterOutput").innerText=
-chars[Math.floor(Math.random()*chars.length)];
+geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
+
+const material=new THREE.PointsMaterial({size:0.01,color:0xff0055});
+const particles=new THREE.Points(geometry,material);
+scene.add(particles);
+
+camera.position.z=3;
+
+let warp=false;
+
+function animate(){
+requestAnimationFrame(animate);
+
+if(warp){
+particles.rotation.z+=0.05;
+camera.position.z-=0.05;
+if(camera.position.z<0.5) warp=false;
+}else{
+particles.rotation.y+=0.002;
+particles.rotation.x+=0.001;
 }
 
-// STUDY HELP
-function studyHelp(){
-let subject=document.getElementById("studyInput").value.toLowerCase();
-let response="";
-
-if(subject.includes("math"))
-response="Mathematics involves algebra, calculus, geometry and logical reasoning.";
-else if(subject.includes("physics"))
-response="Physics studies motion, force, energy, electricity, and quantum mechanics.";
-else if(subject.includes("history"))
-response="History explores civilizations, wars, revolutions, and cultural evolution.";
-else
-response="Subject found. Begin structured study with theory, examples, and practice questions.";
-
-document.getElementById("studyOutput").innerText=response;
+renderer.render(scene,camera);
 }
 
-// ANIME DATABASE
-const animeDB={
-"naruto":"Ninja story about becoming Hokage.",
-"attack on titan":"Humanity fights giant Titans.",
-"demon slayer":"Demon hunters protecting humanity.",
-"one piece":"Pirate journey to find the One Piece treasure.",
-"jujutsu kaisen":"Sorcerers battling cursed spirits."
-};
+animate();
 
-function searchAnime(){
-let query=document.getElementById("animeSearch").value.toLowerCase();
-let result=animeDB[query] || "Anime not found in archive.";
-document.getElementById("animeOutput").innerText=result;
+function warpEffect(){
+warp=true;
 }
 
-// LORE
-function generateLore(){
-const lore=[
-"The System originated from a fallen cosmic AI.",
-"The Sovereign Rank can rewrite world laws.",
-"Guild Wars reshape continental power structures."
-];
-document.getElementById("loreOutput").innerText=
-lore[Math.floor(Math.random()*lore.length)];
-}
-
-// RESEARCH
-function researchHelp(){
-let question=document.getElementById("researchInput").value;
-document.getElementById("researchOutput").innerText=
-"Research initiated on: "+question+" | Analysis suggests structured study and cross-referencing sources.";
-}
+window.addEventListener('resize',()=>{
+renderer.setSize(window.innerWidth,window.innerHeight);
+camera.aspect=window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+});
 
 </script>
 
