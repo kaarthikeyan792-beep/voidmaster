@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AbyssForge</title>
+  <title>Skyreign</title>
 
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: url("https://images.unsplash.com/photo-1503264116251-35a269479413") no-repeat center center fixed;
-      background-size: cover;
+      background-color: black;
       color: white;
     }
 
     nav {
-      background-color: rgba(0,0,0,0.9);
+      background: #0a0a0a;
       padding: 15px;
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 40px;
       border-bottom: 2px solid crimson;
+      position: sticky;
+      top: 0;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
@@ -34,96 +36,103 @@
     header {
       text-align: center;
       padding: 60px 20px;
-      background-color: rgba(0,0,0,0.7);
+      background: linear-gradient(to bottom, #000000, #1a0000);
+    }
+
+    header img {
+      width: 80%;
+      max-width: 700px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px crimson;
     }
 
     .section {
-      padding: 40px;
-      background-color: rgba(0,0,0,0.8);
-      margin: 20px;
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: #111;
+      padding: 20px;
+      margin: 20px 0;
       border-radius: 10px;
+      border: 1px solid crimson;
+      box-shadow: 0 0 15px rgba(255,0,0,0.3);
     }
 
     button {
-      background-color: crimson;
+      background: crimson;
       color: white;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
-      margin-top: 10px;
       border-radius: 5px;
+      margin-top: 10px;
     }
 
     button:hover {
-      background-color: darkred;
+      background: darkred;
     }
 
     input {
       padding: 8px;
-      margin-top: 10px;
       width: 200px;
     }
-
   </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
 <nav>
   <a href="#home">Home</a>
   <a href="#generator">Generator</a>
   <a href="#lore">Lore Vault</a>
 </nav>
 
-<!-- HERO -->
 <header id="home">
-  <h1>⚔️ AbyssForge ⚔️</h1>
-  <p>Forge Your Legend. Create. Dominate.</p>
+  <img src="2.1.png" alt="Skyreign Logo">
+  <h1>🔥 Welcome to Skyreign 🔥</h1>
+  <p>Rule the Darkness. Forge the Legend.</p>
 </header>
 
-<!-- GENERATOR SECTION -->
 <div class="section" id="generator">
-  <h2>🔥 Anime Character + Story Generator</h2>
-  <button onclick="generateAll()">Generate Everything</button>
-  <p id="output"></p>
+  <div class="card">
+    <h2>⚔️ Character + Story Generator</h2>
+    <button onclick="generateAll()">Generate</button>
+    <p id="output"></p>
+  </div>
 </div>
 
-<!-- LORE VAULT -->
 <div class="section" id="lore">
-  <h2>📚 Lore Vault</h2>
-  <input type="text" id="searchInput" placeholder="Search Anime...">
-  <button onclick="searchLore()">Search</button>
-  <p id="loreResult"></p>
+  <div class="card">
+    <h2>📚 Lore Vault</h2>
+    <input type="text" id="searchInput" placeholder="Search Anime...">
+    <button onclick="searchLore()">Search</button>
+    <p id="loreResult"></p>
+  </div>
 </div>
 
 <script>
-
 function generateAll() {
-
-  const names = ["Ryuken", "Kaizen", "Valthor", "Akira", "Zerion"];
-  const powers = ["Void Flame", "Shadow Manipulation", "Storm Dominion", "Blood Eclipse"];
-  const weapons = ["Katana", "Scythe", "Dark Spear", "Twin Blades"];
-  const settings = ["under a crimson moon", "in a fallen kingdom", "inside a cursed dimension"];
+  const names = ["Zerion", "Kaizen", "Ryuken", "Valthor"];
+  const powers = ["Void Flame", "Shadow Control", "Storm Dominion"];
+  const weapons = ["Crimson Blade", "Dark Spear", "Shadow Katana"];
+  const settings = ["under a blood moon", "in a ruined empire", "inside a cursed realm"];
 
   let name = names[Math.floor(Math.random()*names.length)];
   let power = powers[Math.floor(Math.random()*powers.length)];
   let weapon = weapons[Math.floor(Math.random()*weapons.length)];
   let setting = settings[Math.floor(Math.random()*settings.length)];
 
-  let story = name + " wields the power of " + power +
-  " using a " + weapon +
-  " while fighting " + setting + ".";
-
-  let wallpaperPrompt = "Dark anime warrior with " + weapon +
-  " glowing with " + power + " energy.";
-
   document.getElementById("output").innerHTML =
   "<strong>Main Character:</strong> " + name +
   "<br><strong>Power:</strong> " + power +
   "<br><strong>Weapon:</strong> " + weapon +
-  "<br><strong>Story:</strong> " + story +
-  "<br><strong>Wallpaper Idea:</strong> " + wallpaperPrompt;
+  "<br><strong>Story:</strong> " + name +
+  " wields " + power + " with a " + weapon +
+  " while fighting " + setting + ".";
 }
 
 function searchLore() {
@@ -131,21 +140,20 @@ function searchLore() {
   let result = "";
 
   if (input.includes("naruto")) {
-    result = "Naruto Ranking: Hokage Level, Chakra Based Power System.";
+    result = "Naruto Rankings: Hokage Tier > Jonin > Chunin > Genin.";
   }
   else if (input.includes("attack on titan")) {
-    result = "Attack on Titan Ranking: Titan Shifters > Ackermans > Soldiers.";
+    result = "AoT Rankings: Titan Shifters > Ackermans > Scouts.";
   }
   else if (input.includes("solo leveling")) {
-    result = "Solo Leveling Ranking: Monarchs > National Hunters > S Rank Hunters.";
+    result = "Solo Leveling Rankings: Monarchs > National Hunters > S Rank Hunters.";
   }
   else {
-    result = "Anime not found in Vault.";
+    result = "Anime not found in Skyreign Vault.";
   }
 
   document.getElementById("loreResult").innerHTML = result;
 }
-
 </script>
 
 </body>
