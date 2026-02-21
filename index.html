@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>AbyssForge</title>
+
   <style>
     body {
       margin: 0;
@@ -36,6 +37,20 @@
     button:hover {
       background-color: darkred;
     }
+
+    .section {
+      padding: 40px 20px;
+    }
+
+    .card {
+      border: 1px solid crimson;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 400px;
+      border-radius: 8px;
+      background-color: #111;
+    }
+
   </style>
 </head>
 
@@ -46,20 +61,55 @@
 <div class="hero">
   <h1>🔥 Welcome to My Anime Empire 🔥</h1>
   <p>Forge Your Legend. Create. Dominate.</p>
-  <button onclick="alert('Generator coming soon!')">
+  <button onclick="alert('More features coming soon!')">
     Enter the Forge
   </button>
 </div>
 
+<!-- STEP 2: FEATURE SECTIONS -->
+
+<div class="section">
+
+  <div class="card">
+    <h2>⚡ Character Generator</h2>
+    <p>Create powerful anime characters instantly.</p>
+    <button onclick="generate()">Generate Character</button>
+    <p id="result"></p>
+  </div>
+
+  <div class="card">
+    <h2>📚 Lore Vault</h2>
+    <p>Deep dive into anime power systems and theories.</p>
+  </div>
+
+  <div class="card">
+    <h2>🎨 Wallpaper Forge</h2>
+    <p>Generate epic anime wallpapers.</p>
+  </div>
+
+</div>
+
+<!-- STEP 3: GENERATOR SCRIPT -->
+
+<script>
+function generate() {
+  const names = ["Ryuken", "Kaizen", "Valthor", "Akira", "Zerion"];
+  const powers = ["Void Flame", "Shadow Manipulation", "Blood Eclipse", "Storm Dominion", "Abyss Control"];
+  const weapons = ["Katana", "Scythe", "Twin Blades", "Dark Spear", "Crimson Sword"];
+  const ranks = ["Shadow Rank", "Elite Slayer", "Void Monarch", "Abyss Lord"];
+
+  let name = names[Math.floor(Math.random() * names.length)];
+  let power = powers[Math.floor(Math.random() * powers.length)];
+  let weapon = weapons[Math.floor(Math.random() * weapons.length)];
+  let rank = ranks[Math.floor(Math.random() * ranks.length)];
+
+  document.getElementById("result").innerHTML =
+    "<br><strong>Name:</strong> " + name +
+    "<br><strong>Power:</strong> " + power +
+    "<br><strong>Weapon:</strong> " + weapon +
+    "<br><strong>Rank:</strong> " + rank;
+}
+</script>
+
 </body>
 </html>
-<div style="padding: 40px;">
-  <h2>⚡ Character Generator</h2>
-  <p>Create powerful anime characters instantly.</p>
-
-  <h2>📚 Lore Vault</h2>
-  <p>Deep dive into anime power systems and theories.</p>
-
-  <h2>🎨 Wallpaper Forge</h2>
-  <p>Generate epic anime wallpapers.</p>
-</div>
