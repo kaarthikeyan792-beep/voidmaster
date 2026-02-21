@@ -1,204 +1,207 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SKYREIGN Anime Empire</title>
-
+<title>SKYREIGN AI COMMAND SYSTEM</title>
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
-  color: white;
+
+body{
+margin:0;
+font-family:Arial;
+background:#0b0b0b;
+color:white;
 }
 
-header {
-  text-align: center;
-  padding: 40px;
-  background: black;
+header{
+background:black;
+padding:30px;
+text-align:center;
+border-bottom:3px solid crimson;
 }
 
-header img {
-  width: 250px;
+h1{
+color:crimson;
 }
 
-h1 {
-  color: crimson;
+.dashboard{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+padding:30px;
 }
 
-section {
-  padding: 40px;
+.department{
+background:#151515;
+padding:20px;
+border-left:4px solid crimson;
+transition:0.3s;
 }
 
-.realm {
-  background: #1a1a1a;
-  margin: 20px 0;
-  padding: 20px;
-  border-left: 4px solid crimson;
-  transition: 0.3s;
+.department:hover{
+transform:scale(1.03);
 }
 
-.realm:hover {
-  transform: scale(1.02);
+button{
+background:crimson;
+color:white;
+border:none;
+padding:8px 12px;
+margin-top:10px;
+cursor:pointer;
 }
 
-button {
-  background: crimson;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
+textarea{
+width:100%;
+height:80px;
+margin-top:10px;
+background:#1f1f1f;
+color:white;
+border:none;
+padding:10px;
 }
 
-input {
-  padding: 8px;
-  width: 60%;
+output{
+display:block;
+margin-top:10px;
+color:#00ffcc;
 }
-.generator-box {
-  background: #1a1a1a;
-  padding: 20px;
-  margin-top: 20px;
-}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="your-image-name.png">
-  <h1>👑 SKYREIGN Anime Empire</h1>
-  <p>Welcome to the Multiversal Lore Vault</p>
+<h1>👑 SKYREIGN AI COMMAND SYSTEM</h1>
+<p>All Departments Under Supreme Command</p>
 </header>
 
-<section>
-<h2>📚 Lore Vault</h2>
+<div class="dashboard">
 
-<div class="realm">
-<h3>🌀 Shinobi Realm</h3>
-<ul>
-<li>Naruto</li>
-<li>Naruto Shippuden</li>
-<li>Boruto</li>
-</ul>
-</div>
-
-<div class="realm">
-<h3>⚔️ Titan War Realm</h3>
-<ul>
-<li>Attack on Titan</li>
-</ul>
-</div>
-
-<div class="realm">
-<h3>🩸 Demon Epoch</h3>
-<ul>
-<li>Demon Slayer</li>
-</ul>
-</div>
-
-<div class="realm">
-<h3>⚡ Cursed Energy Age</h3>
-<ul>
-<li>Jujutsu Kaisen</li>
-</ul>
-</div>
-
-<div class="realm">
-<h3>👑 Pirate Era</h3>
-<ul>
-<li>One Piece</li>
-</ul>
-</div>
-
-</section>
-
-<section>
-<h2>🔎 Lore Search</h2>
-<input type="text" id="searchInput" placeholder="Search anime...">
-<button onclick="searchAnime()">Search</button>
-<p id="searchResult"></p>
-</section>
-
-<section>
-<h2>🎮 Anime Story Generator</h2>
-<div class="generator-box">
+<!-- STORY DEPARTMENT -->
+<div class="department">
+<h2>🎌 Anime Story Department</h2>
+<p>Head: AI Archon Raizen</p>
 <button onclick="generateStory()">Generate Story</button>
-<p id="storyOutput"></p>
+<output id="storyOutput"></output>
 </div>
-</section>
 
-<section>
-<h2>🧑‍🎤 Main Character Generator</h2>
-<div class="generator-box">
-<button onclick="generateCharacter()">Generate Character</button>
-<p id="characterOutput"></p>
+<!-- CHARACTER FORGE -->
+<div class="department">
+<h2>⚔️ Character Forge</h2>
+<p>Head: Lady Aiko</p>
+<button onclick="generateCharacter()">Create Character</button>
+<output id="characterOutput"></output>
 </div>
-</section>
 
-<section>
-<h2>🖼 Wallpaper Idea Generator</h2>
-<div class="generator-box">
-<button onclick="generateWallpaper()">Generate Wallpaper Idea</button>
-<p id="wallpaperOutput"></p>
+<!-- STUDY DEPARTMENT -->
+<div class="department">
+<h2>📚 Study Assistance Department</h2>
+<p>Head: Scholar Orion</p>
+<textarea id="studyInput" placeholder="Enter subject (Math, Physics, History...)"></textarea>
+<button onclick="studyHelp()">Get Help</button>
+<output id="studyOutput"></output>
 </div>
-</section>
 
-<section>
-<h2>🏆 Top Rankings</h2>
-<div class="realm">
-<ul>
-<li>🔥 Strongest MC: Goku</li>
-<li>🧠 Smartest MC: Light Yagami</li>
-<li>⚔️ Best Fighter: Levi Ackerman</li>
-<li>👑 Best Villain: Madara Uchiha</li>
-</ul>
+<!-- ANIME ARCHIVE -->
+<div class="department">
+<h2>🌌 Anime Archive</h2>
+<p>Head: Archivist Zero</p>
+<textarea id="animeSearch" placeholder="Search anime..."></textarea>
+<button onclick="searchAnime()">Search</button>
+<output id="animeOutput"></output>
 </div>
-</section>
+
+<!-- LORE VAULT -->
+<div class="department">
+<h2>🏛 Lore Vault</h2>
+<p>Head: Void Oracle</p>
+<button onclick="generateLore()">Reveal Lore</button>
+<output id="loreOutput"></output>
+</div>
+
+<!-- RESEARCH DIVISION -->
+<div class="department">
+<h2>🧠 Research Division</h2>
+<p>Head: Quantum Sage</p>
+<textarea id="researchInput" placeholder="Ask research question..."></textarea>
+<button onclick="researchHelp()">Analyze</button>
+<output id="researchOutput"></output>
+</div>
+
+</div>
 
 <script>
 
-const animeDatabase = {
-  "naruto": "A ninja story about Naruto Uzumaki striving to become Hokage.",
-  "attack on titan": "Humanity fights giant Titans threatening extinction.",
-  "demon slayer": "Tanjiro hunts demons to save his sister.",
-  "jujutsu kaisen": "Sorcerers fight cursed spirits using cursed energy.",
-  "one piece": "Luffy sails to become King of the Pirates."
+// STORY GENERATOR
+function generateStory(){
+const stories=[
+"A fallen emperor awakens a forbidden dragon core to reclaim his shattered kingdom.",
+"In a cyberpunk city ruled by guilds, a rogue system user challenges the world ranking board.",
+"A systemless boy hacks the ranking system and becomes a hidden sovereign."
+];
+document.getElementById("storyOutput").innerText=
+stories[Math.floor(Math.random()*stories.length)];
+}
+
+// CHARACTER GENERATOR
+function generateCharacter(){
+const chars=[
+"Name: Kael | Rank: S | Ability: Shadow Rift Manipulation",
+"Name: Aira | Rank: SS | Ability: Time Fragment Slash",
+"Name: Zeon | Rank: Mythic | Ability: Blood Dragon Form"
+];
+document.getElementById("characterOutput").innerText=
+chars[Math.floor(Math.random()*chars.length)];
+}
+
+// STUDY HELP
+function studyHelp(){
+let subject=document.getElementById("studyInput").value.toLowerCase();
+let response="";
+
+if(subject.includes("math"))
+response="Mathematics involves algebra, calculus, geometry and logical reasoning.";
+else if(subject.includes("physics"))
+response="Physics studies motion, force, energy, electricity, and quantum mechanics.";
+else if(subject.includes("history"))
+response="History explores civilizations, wars, revolutions, and cultural evolution.";
+else
+response="Subject found. Begin structured study with theory, examples, and practice questions.";
+
+document.getElementById("studyOutput").innerText=response;
+}
+
+// ANIME DATABASE
+const animeDB={
+"naruto":"Ninja story about becoming Hokage.",
+"attack on titan":"Humanity fights giant Titans.",
+"demon slayer":"Demon hunters protecting humanity.",
+"one piece":"Pirate journey to find the One Piece treasure.",
+"jujutsu kaisen":"Sorcerers battling cursed spirits."
 };
 
-function searchAnime() {
-  let input = document.getElementById("searchInput").value.toLowerCase();
-  let result = animeDatabase[input];
-  document.getElementById("searchResult").innerText = result ? result : "Anime not found in vault.";
+function searchAnime(){
+let query=document.getElementById("animeSearch").value.toLowerCase();
+let result=animeDB[query] || "Anime not found in archive.";
+document.getElementById("animeOutput").innerText=result;
 }
 
-function generateStory() {
-  const stories = [
-    "In a shattered empire, a lone warrior unlocks forbidden dragon energy.",
-    "A cursed prince must defeat the shadow king to save his realm.",
-    "A fallen angel reincarnates as a demon hunter in a war-torn city."
-  ];
-  document.getElementById("storyOutput").innerText =
-    stories[Math.floor(Math.random() * stories.length)];
+// LORE
+function generateLore(){
+const lore=[
+"The System originated from a fallen cosmic AI.",
+"The Sovereign Rank can rewrite world laws.",
+"Guild Wars reshape continental power structures."
+];
+document.getElementById("loreOutput").innerText=
+lore[Math.floor(Math.random()*lore.length)];
 }
 
-function generateCharacter() {
-  const characters = [
-    "Name: Raizen | Power: Void Flame | Rank: S-Class",
-    "Name: Aiko | Power: Time Slash | Rank: Legendary",
-    "Name: Kuro | Power: Blood Lightning | Rank: Mythic"
-  ];
-  document.getElementById("characterOutput").innerText =
-    characters[Math.floor(Math.random() * characters.length)];
-}
-
-function generateWallpaper() {
-  const wallpapers = [
-    "Dark warrior standing under crimson moon with dragon aura.",
-    "Cyberpunk samurai in neon rain city.",
-    "Demon slayer surrounded by blue fire in ruined temple."
-  ];
-  document.getElementById("wallpaperOutput").innerText =
-    wallpapers[Math.floor(Math.random() * wallpapers.length)];
+// RESEARCH
+function researchHelp(){
+let question=document.getElementById("researchInput").value;
+document.getElementById("researchOutput").innerText=
+"Research initiated on: "+question+" | Analysis suggests structured study and cross-referencing sources.";
 }
 
 </script>
