@@ -1,159 +1,206 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Skyreign</title>
+<title>SKYREIGN Anime Empire</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: black;
-      color: white;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: white;
+}
 
-    nav {
-      background: #0a0a0a;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      border-bottom: 2px solid crimson;
-      position: sticky;
-      top: 0;
-    }
+header {
+  text-align: center;
+  padding: 40px;
+  background: black;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+header img {
+  width: 250px;
+}
 
-    nav a:hover {
-      color: crimson;
-    }
+h1 {
+  color: crimson;
+}
 
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to bottom, #000000, #1a0000);
-    }
+section {
+  padding: 40px;
+}
 
-    header img {
-      width: 80%;
-      max-width: 700px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px crimson;
-    }
+.realm {
+  background: #1a1a1a;
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 4px solid crimson;
+  transition: 0.3s;
+}
 
-    .section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+.realm:hover {
+  transform: scale(1.02);
+}
 
-    .card {
-      background: #111;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 10px;
-      border: 1px solid crimson;
-      box-shadow: 0 0 15px rgba(255,0,0,0.3);
-    }
+button {
+  background: crimson;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
-    button {
-      background: crimson;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background: darkred;
-    }
-
-    input {
-      padding: 8px;
-      width: 200px;
-    }
-  </style>
+input {
+  padding: 8px;
+  width: 60%;
+}
+.generator-box {
+  background: #1a1a1a;
+  padding: 20px;
+  margin-top: 20px;
+}
+</style>
 </head>
 
 <body>
 
-<nav>
-  <a href="#home">Home</a>
-  <a href="#generator">Generator</a>
-  <a href="#lore">Lore Vault</a>
-</nav>
-
-<header id="home">
-  <img src="2.1.png" alt="Skyreign Logo">
-  <h1>🔥 Welcome to Skyreign 🔥</h1>
-  <p>Rule the Darkness. Forge the Legend.</p>
+<header>
+  <img src="your-image-name.png">
+  <h1>👑 SKYREIGN Anime Empire</h1>
+  <p>Welcome to the Multiversal Lore Vault</p>
 </header>
 
-<div class="section" id="generator">
-  <div class="card">
-    <h2>⚔️ Character + Story Generator</h2>
-    <button onclick="generateAll()">Generate</button>
-    <p id="output"></p>
-  </div>
+<section>
+<h2>📚 Lore Vault</h2>
+
+<div class="realm">
+<h3>🌀 Shinobi Realm</h3>
+<ul>
+<li>Naruto</li>
+<li>Naruto Shippuden</li>
+<li>Boruto</li>
+</ul>
 </div>
 
-<div class="section" id="lore">
-  <div class="card">
-    <h2>📚 Lore Vault</h2>
-    <input type="text" id="searchInput" placeholder="Search Anime...">
-    <button onclick="searchLore()">Search</button>
-    <p id="loreResult"></p>
-  </div>
+<div class="realm">
+<h3>⚔️ Titan War Realm</h3>
+<ul>
+<li>Attack on Titan</li>
+</ul>
 </div>
+
+<div class="realm">
+<h3>🩸 Demon Epoch</h3>
+<ul>
+<li>Demon Slayer</li>
+</ul>
+</div>
+
+<div class="realm">
+<h3>⚡ Cursed Energy Age</h3>
+<ul>
+<li>Jujutsu Kaisen</li>
+</ul>
+</div>
+
+<div class="realm">
+<h3>👑 Pirate Era</h3>
+<ul>
+<li>One Piece</li>
+</ul>
+</div>
+
+</section>
+
+<section>
+<h2>🔎 Lore Search</h2>
+<input type="text" id="searchInput" placeholder="Search anime...">
+<button onclick="searchAnime()">Search</button>
+<p id="searchResult"></p>
+</section>
+
+<section>
+<h2>🎮 Anime Story Generator</h2>
+<div class="generator-box">
+<button onclick="generateStory()">Generate Story</button>
+<p id="storyOutput"></p>
+</div>
+</section>
+
+<section>
+<h2>🧑‍🎤 Main Character Generator</h2>
+<div class="generator-box">
+<button onclick="generateCharacter()">Generate Character</button>
+<p id="characterOutput"></p>
+</div>
+</section>
+
+<section>
+<h2>🖼 Wallpaper Idea Generator</h2>
+<div class="generator-box">
+<button onclick="generateWallpaper()">Generate Wallpaper Idea</button>
+<p id="wallpaperOutput"></p>
+</div>
+</section>
+
+<section>
+<h2>🏆 Top Rankings</h2>
+<div class="realm">
+<ul>
+<li>🔥 Strongest MC: Goku</li>
+<li>🧠 Smartest MC: Light Yagami</li>
+<li>⚔️ Best Fighter: Levi Ackerman</li>
+<li>👑 Best Villain: Madara Uchiha</li>
+</ul>
+</div>
+</section>
 
 <script>
-function generateAll() {
-  const names = ["Zerion", "Kaizen", "Ryuken", "Valthor"];
-  const powers = ["Void Flame", "Shadow Control", "Storm Dominion"];
-  const weapons = ["Crimson Blade", "Dark Spear", "Shadow Katana"];
-  const settings = ["under a blood moon", "in a ruined empire", "inside a cursed realm"];
 
-  let name = names[Math.floor(Math.random()*names.length)];
-  let power = powers[Math.floor(Math.random()*powers.length)];
-  let weapon = weapons[Math.floor(Math.random()*weapons.length)];
-  let setting = settings[Math.floor(Math.random()*settings.length)];
+const animeDatabase = {
+  "naruto": "A ninja story about Naruto Uzumaki striving to become Hokage.",
+  "attack on titan": "Humanity fights giant Titans threatening extinction.",
+  "demon slayer": "Tanjiro hunts demons to save his sister.",
+  "jujutsu kaisen": "Sorcerers fight cursed spirits using cursed energy.",
+  "one piece": "Luffy sails to become King of the Pirates."
+};
 
-  document.getElementById("output").innerHTML =
-  "<strong>Main Character:</strong> " + name +
-  "<br><strong>Power:</strong> " + power +
-  "<br><strong>Weapon:</strong> " + weapon +
-  "<br><strong>Story:</strong> " + name +
-  " wields " + power + " with a " + weapon +
-  " while fighting " + setting + ".";
+function searchAnime() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let result = animeDatabase[input];
+  document.getElementById("searchResult").innerText = result ? result : "Anime not found in vault.";
 }
 
-function searchLore() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  let result = "";
-
-  if (input.includes("naruto")) {
-    result = "Naruto Rankings: Hokage Tier > Jonin > Chunin > Genin.";
-  }
-  else if (input.includes("attack on titan")) {
-    result = "AoT Rankings: Titan Shifters > Ackermans > Scouts.";
-  }
-  else if (input.includes("solo leveling")) {
-    result = "Solo Leveling Rankings: Monarchs > National Hunters > S Rank Hunters.";
-  }
-  else {
-    result = "Anime not found in Skyreign Vault.";
-  }
-
-  document.getElementById("loreResult").innerHTML = result;
+function generateStory() {
+  const stories = [
+    "In a shattered empire, a lone warrior unlocks forbidden dragon energy.",
+    "A cursed prince must defeat the shadow king to save his realm.",
+    "A fallen angel reincarnates as a demon hunter in a war-torn city."
+  ];
+  document.getElementById("storyOutput").innerText =
+    stories[Math.floor(Math.random() * stories.length)];
 }
+
+function generateCharacter() {
+  const characters = [
+    "Name: Raizen | Power: Void Flame | Rank: S-Class",
+    "Name: Aiko | Power: Time Slash | Rank: Legendary",
+    "Name: Kuro | Power: Blood Lightning | Rank: Mythic"
+  ];
+  document.getElementById("characterOutput").innerText =
+    characters[Math.floor(Math.random() * characters.length)];
+}
+
+function generateWallpaper() {
+  const wallpapers = [
+    "Dark warrior standing under crimson moon with dragon aura.",
+    "Cyberpunk samurai in neon rain city.",
+    "Demon slayer surrounded by blue fire in ruined temple."
+  ];
+  document.getElementById("wallpaperOutput").innerText =
+    wallpapers[Math.floor(Math.random() * wallpapers.length)];
+}
+
 </script>
 
 </body>
